@@ -1,0 +1,63 @@
+@charset "UTF-8";
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "微軟正黑體", "Microsoft JhengHei", sans-serif;
+}
+
+.navbar {
+  background-color: plum;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+.navbar ul li {
+  padding: 1rem 0rem 1rem 3rem;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: azure;
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: relative;
+}
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: mediumorchid;
+  transition: all 0.5s ease-in-out;
+}
+.navbar ul li a:hover, .navbar ul li a:focus {
+  color: mediumorchid;
+}
+.navbar ul li a:hover::after, .navbar ul li a:focus::after {
+  width: 100%;
+}
+
+.footer {
+  min-height: 10vh;
+  background-color: plum;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer p {
+  margin: auto;
+  font-size: 0.8 rem;
+  font-weight: bold;
+  color: azure;
+}/*# sourceMappingURL=style.css.map */

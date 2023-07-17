@@ -1,0 +1,16 @@
+.footer {
+  min-height: 10vh;
+  background-color: plum;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    // 垂直置中
+    margin: auto;
+    font-size: 0.8 rem;
+    font-weight: bold;
+    color: azure;
+  }
+}

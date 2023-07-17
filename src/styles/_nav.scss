@@ -1,0 +1,55 @@
+.navbar {
+  background-color: plum;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  ul {
+    // 底下這 3 行的功能
+    // 讓 ul 元素不具有默認的內容寬度 (避免跑版)
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    li {
+      padding: 1rem 0rem 1rem 3rem;
+
+      a {
+        text-decoration: none;
+        color: azure;
+        font-size: 1.3rem;
+        font-weight: bold;
+        // inline element 也可以使用 position
+        position: relative;
+
+        // 使用 ::after 偽元素創建底線元素，並製作動畫效果 (底線由左至右出現)
+        &::after {
+          // content 是必寫的，不需要任何實際內容時，就設定成 ""
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 1px;
+          background-color: mediumorchid;
+          // 動畫效果設定
+          transition: all 0.5s ease-in-out;
+        }
+
+        // 使用 &:hover 確保懸停在連結時，有底線的狀態；懸停離開時，底線則消失
+        // 使用 &:focus 確保點擊進入該連結時，仍然保持有底線的狀態
+        &:hover,
+        &:focus {
+          color: mediumorchid;
+
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
