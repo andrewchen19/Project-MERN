@@ -96,58 +96,63 @@ const EnrollCourse = ({ currentUser }) => {
         </div>
       )}
 
-      {/* 沒有課程資料時，courseData 是 empty array (truthy value)，且是無效內容的 expression (不會顯示) */}
-      {/* 當有 currentUser 但沒有課程資料時，前兩個 operands 都是 truthy value */}
+      {/* 只有以導師身分登入的使用者可以看到這些課程資料 */}
+      {/* 當沒有課程資料時，courseData 是 empty array (truthy value)，且是無效內容的 expression (不會顯示) */}
       {/* 但第三個 operand 是 false (flasy value)，且 boolean 是無效內容的 expression (不會顯示) */}
-      {currentUser && courseData && courseData.length !== 0 && (
-        <div>
-          <h3>以下是我們所有的課程：</h3>
+      {currentUser &&
+        currentUser.user.role === "student" &&
+        courseData.length !== 0 && (
+          <div>
+            <h3>以下是我們所有的課程：</h3>
 
-          {message && <div className="alert alert-danger">{message}</div>}
+            {message && <div className="alert alert-danger">{message}</div>}
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "flex-start",
-            }}
-          >
-            {courseData.map((course) => {
-              return (
-                <div
-                  key={course._id}
-                  className="card border-info"
-                  style={{ width: "16rem", margin: "0 2rem 1rem 0" }}
-                >
-                  <div className="card-body">
-                    <h5 className="card-title">課程名稱：{course.title}</h5>
-                    <p style={{ margin: "0.5rem 0rem" }} className="card-text">
-                      {course.description}
-                    </p>
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      學生人數：{course.students.length}
-                    </p>
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      課程價格：{course.price}
-                    </p>
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      導師：{course.instructor.username}
-                    </p>
-                    <button
-                      className="btn btn-outline-primary"
-                      // 設定 id 屬性
-                      id={course._id}
-                      onClick={enrollHandler}
-                    >
-                      註冊課程
-                    </button>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "flex-start",
+              }}
+            >
+              {courseData.map((course) => {
+                return (
+                  <div
+                    key={course._id}
+                    className="card border-info"
+                    style={{ width: "16rem", margin: "0 2rem 1rem 0" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">課程名稱：{course.title}</h5>
+                      <p
+                        style={{ margin: "0.5rem 0rem" }}
+                        className="card-text"
+                      >
+                        {course.description}
+                      </p>
+                      <p style={{ margin: "0.5rem 0rem" }}>
+                        學生人數：{course.students.length}
+                      </p>
+                      <p style={{ margin: "0.5rem 0rem" }}>
+                        課程價格：{course.price}
+                      </p>
+                      <p style={{ margin: "0.5rem 0rem" }}>
+                        導師：{course.instructor.username}
+                      </p>
+                      <button
+                        className="btn btn-outline-primary"
+                        // 設定 id 屬性
+                        id={course._id}
+                        onClick={enrollHandler}
+                      >
+                        註冊課程
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
