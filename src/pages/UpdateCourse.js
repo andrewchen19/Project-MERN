@@ -106,7 +106,7 @@ const UpdateCourse = ({ currentUser, courseID, instructorID }) => {
             {message && <div className="alert alert-danger">{message}</div>}
 
             <div className="form-group">
-              <label for="exampleforTitle">課程名稱：</label>
+              <label htmlFor="exampleforTitle">課程名稱：</label>
               <input
                 name="title"
                 type="text"
@@ -117,7 +117,7 @@ const UpdateCourse = ({ currentUser, courseID, instructorID }) => {
                 onChange={titleHandler}
               />
               <br />
-              <label for="exampleforContent">課程內容：</label>
+              <label htmlFor="exampleforContent">課程內容：</label>
               <textarea
                 className="form-control"
                 id="exampleforContent"
@@ -128,7 +128,7 @@ const UpdateCourse = ({ currentUser, courseID, instructorID }) => {
                 onChange={descriptionHandler}
               />
               <br />
-              <label for="exampleforPrice">課程價格：</label>
+              <label htmlFor="exampleforPrice">課程價格：</label>
               <input
                 name="price"
                 type="number"
