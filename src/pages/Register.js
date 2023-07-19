@@ -52,7 +52,8 @@ const Register = () => {
         {/* message 為 empty string (falsy value)，原本會 return first falsy operand */}
         {/* 但 empty string 為無效內容的表達式，因此不會顯示任何內容 */}
         {message && <div className="alert alert-danger">{message}</div>}
-        <div>
+
+        <div className="form-group">
           <label htmlFor="username">用戶名稱:</label>
           <input
             onChange={usernameHandler}
